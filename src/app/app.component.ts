@@ -10,23 +10,39 @@ export class AppComponent {
   includeLetters=false;
   includeSymbols=false;
   includeNumbers=false;
-  length=0
+  length
   onChangeLength(value:string)
   {
+    console.log(value)
 
     const parsedval=parseInt(value)
-    if(!(parsedval===NaN))
+    if(parsedval!=NaN)
     {
+
       this.length=parsedval;
 
     }
+    console.log(this.length)
 
   }
   onButtonClick() {
-    this.password = "myPassword";
-    console.log(this.includeLetters)
-    console.log(this.includeNumbers)
-    console.log(this.includeSymbols)
+
+    const letters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    const numbers="1234567890"
+    const symbols="!@#$%)(?&"
+    let validchars=""
+    let localpassword=""
+    if(this.includeLetters)
+    {
+      validchars+=letters
+    }
+    if(this.includeNumbers) {validchars+=numbers;}
+    if(this.includeSymbols){ validchars+=symbols;}
+    while(localpassword.length!=this.length)
+    {
+      localpassword+=validchars[Math.floor(Math.random()*validchars.length)]
+    }
+    this.password=localpassword;
   }
   onChangeLetters(){
     this.includeLetters=!this.includeLetters;
