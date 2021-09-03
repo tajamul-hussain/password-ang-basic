@@ -18,7 +18,8 @@
 <input type="checkbox" (change)="onChangeSymbols()"/>
 </div>
 <div>
-  <button (click)="onButtonClick()">Generate</button>
+  <button (click)="onButtonClick() " [disabled]="!(length && (includeSymbols||includeLetters||includeNumbers))">
+    Generate</button>
 </div>
 
 <div>

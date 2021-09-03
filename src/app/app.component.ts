@@ -13,7 +13,7 @@ export class AppComponent {
   length
   onChangeLength(value:string)
   {
-    console.log(value)
+
 
     const parsedval=parseInt(value)
     if(parsedval!=NaN)
